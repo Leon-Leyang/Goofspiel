@@ -7,8 +7,10 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <iostream>
 
 using namespace std;
+
 
 // Base class for the character that holds a suit of card at the beginning
 class CardHolder {
@@ -18,9 +20,10 @@ protected:
 	vector<string> cards{ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 
 	// Map to store the mapping between a card and its value
-	static const map<string, int> cardValMap;
-
+	const static map<string, int> cardValMap;
+	
 public:
+
 	// Function to play a card from hand
 	void play(string card);
 
@@ -28,6 +31,10 @@ public:
 	// Pure virtual function that shall be defined in derived class
 	virtual string selectCard() = 0;
 };
+
+
+
+
 
 
 //class Croupier : public CardHolder{

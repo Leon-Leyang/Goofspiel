@@ -1,6 +1,10 @@
 ﻿#include <iostream>
-#include "character.h"
+#include <string>
+#include "Character.h"
+
+using namespace std;
 
 int main() {
+
 	return 0;
 }
