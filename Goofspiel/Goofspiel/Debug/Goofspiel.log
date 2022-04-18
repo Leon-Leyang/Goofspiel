@@ -1,0 +1,5 @@
+﻿  character.cpp
+C:\Users\Leon\Desktop\C++\Goofspiel\Goofspiel\Goofspiel\character.cpp(22,2): warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+  Goofspiel.cpp
+  正在生成代码...
+  Goofspiel.vcxproj -> C:\Users\Leon\Desktop\C++\Goofspiel\Goofspiel\Debug\Goofspiel.exe
