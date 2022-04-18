@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 #include <map>
-#include <iostream>
+#include "Strategy.h"
 
 using namespace std;
 
@@ -16,20 +16,19 @@ using namespace std;
 class CardHolder {
 
 protected:
+	// Map to store the mapping between a card and its value
+	const static map<string, int> cardValMap;
+
 	// Vector of the original hand
 	vector<string> cards{ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 
-	// Map to store the mapping between a card and its value
-	const static map<string, int> cardValMap;
+	// Card selection strategy object
+	Strategy* strategy = NULL;
+
 	
 public:
-
 	// Function to play a card from hand
 	void play(string card);
-
-	// Function to select a card from hand and return the selection
-	// Pure virtual function that shall be defined in derived class
-	virtual string selectCard() = 0;
 };
 
 

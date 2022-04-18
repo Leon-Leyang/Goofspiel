@@ -26,5 +26,8 @@
     <ClInclude Include="Character.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Strategy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
