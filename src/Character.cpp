@@ -65,3 +65,33 @@ Croupier::Croupier() {
 void Croupier::evaluate() {
 	cout << "eval" << endl;
 }
+
+
+
+// Constructor for Computer
+Computer::Computer() {
+	// Initialize the strategy to be the random strategy
+	RandomStrategy* randomStrategy = new RandomStrategy();
+	strategy = randomStrategy;
+}
+
+
+// Function to ask user to play a card from hand
+string Human::play(){
+	string card;
+
+	cout << "Your current hand: ";
+	for(auto & elem : cards){
+        cout<<elem<<", ";
+    }
+	cout << endl;
+	cout << "Please enter the card you want to play for this round: ";
+	cin >> card;
+
+	// Remove the card from hand
+	auto it = find(cards.begin(), cards.end(), card);
+	int index = it - cards.begin();
+	cards.erase(cards.begin() + index);
+
+	return card;
+}

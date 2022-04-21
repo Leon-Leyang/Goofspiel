@@ -33,9 +33,6 @@ public:
 };
 
 
-
-
-
 // Class for the croupier of the game
 class Croupier : public CardHolder{
 
@@ -51,7 +48,17 @@ public:
 	void evaluate();
 };
 
+class Computer : public CardHolder{
+public:
+	// Constructor
+	Computer();
+};
 
+class Human : public CardHolder{
+public:
+	// Function to ask user to play a card from hand
+	std::string play();
+};
 
 
 #endif
