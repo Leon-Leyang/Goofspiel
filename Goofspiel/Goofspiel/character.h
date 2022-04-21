@@ -28,30 +28,29 @@ protected:
 	
 public:
 	// Function to play a card from hand
-	void play(string card);
+	void play();
 };
 
 
+// Class for the croupier of the game
+class Croupier : public CardHolder{
 
+private:
+	// Map to store the score of computer and human
+	map<string, int> scoringMap = {
+		{"computer", 0},
+		{"human", 0}
+	};
 
+public:
+	Croupier() {
+		RandomStrategy randomStrategy;
+		strategy = &randomStrategy;
+	}
 
-
-//class Croupier : public CardHolder{
-//
-//private:
-//	// Map to store the score of computer and human
-//	map<string, int> scoringMap = {
-//		{"computer", 0},
-//		{"human", 0}
-//	};
-//
-//public:
-//	// Function to select a card from hand randomly and return the selection
-//	string selectCard();
-//
-//	// Function to compare the cards and assign scores
-//	void evaluate(string hCard, string cCard);
-//};
+	// Function to compare the cards and assign scores
+	void evaluate(string hCard, string cCard);
+};
 
 
 #endif
