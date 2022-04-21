@@ -1,5 +1,8 @@
 #include "Character.h"
 #include <iostream>
+#include <algorithm>
+
+using namespace std;
 
 // Map to store the mapping between a card and its value
 const map<string, int> CardHolder::cardValMap = {
@@ -19,15 +22,26 @@ const map<string, int> CardHolder::cardValMap = {
 												};
 
 // Function to play a card from hand
-void CardHolder::play() {
+string CardHolder::play() {
+	// Use the strategy to select a card from hand
 	string card = strategy->selectCard(cards);
-	//remove(cards.begin(), cards.end(), card);
+	
+	// Remove the card from hand
+	auto it = find(cards.begin(), cards.end(), card);
+	int index = it - cards.begin();
+	cards.erase(cards.begin() + index);
+	
+	return card;
 }
 
 
+CardHolder::~CardHolder() {
+	delete strategy;
+}
+
 Croupier::Croupier() {
-	RandomStrategy randomStrategy;
-	strategy = &randomStrategy;
+	RandomStrategy* randomStrategy = new RandomStrategy();
+	strategy = randomStrategy;
 }
 
 

@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <string>
-#include <vector>
+#include <ctime>
 #include "Character.h"
 #include "Strategy.h"
 
@@ -8,9 +8,15 @@ using namespace std;
 
 int main() {
 
+	// Set the seed
+	srand(unsigned(time(NULL)));
+
+	// Initilaize a croupier in the game
 	Croupier croupier;
+
 	for (int i = 0; i < 13; i++) {
-		croupier.play();
+		string card = croupier.play();
+		cout << card << endl;
 	}
 
 

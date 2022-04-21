@@ -6,15 +6,13 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
 // Base class for the card selection strategy
 class Strategy {
 
 public:
 	// Function to select a card from hand according to the situation and return the selection
 	// Pure virtual function that shall be defined in derived class
-	string selectCard(const vector<string>& cards);
+	virtual std::string selectCard(std::vector<std::string> cards) = 0;
 };
 
 
@@ -23,7 +21,7 @@ class RandomStrategy : public Strategy{
 
 public:
 	// Function to select a card randomly
-	string selectCard(const vector<string>& cards);
+	virtual std::string selectCard(std::vector<std::string> cards);
 };
 
 
