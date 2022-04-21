@@ -4,7 +4,7 @@
 using namespace std;
 
 // Function to select a card randomly
-string RandomStrategy::selectCard(vector<string> cards) {
+string const RandomStrategy::selectCard(const vector<string>& cards) {
 
 	// Generate a random index from 0 to size of the hand - 1
 	int size = cards.size();
