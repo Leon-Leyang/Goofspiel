@@ -14,15 +14,16 @@ class Strategy {
 public:
 	// Function to select a card from hand according to the situation and return the selection
 	// Pure virtual function that shall be defined in derived class
-	virtual string selectCard() = 0;
+	string selectCard(const vector<string>& cards);
 };
 
+
 // Derived class for random card selection strategy
-class RandomStrategy : public Strategy {
+class RandomStrategy : public Strategy{
 
 public:
 	// Function to select a card randomly
-	string selectCard();
+	string selectCard(const vector<string>& cards);
 };
 
 

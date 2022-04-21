@@ -43,13 +43,10 @@ private:
 	};
 
 public:
-	Croupier() {
-		RandomStrategy randomStrategy;
-		strategy = &randomStrategy;
-	}
+	Croupier();
 
 	// Function to compare the cards and assign scores
-	void evaluate(string hCard, string cCard);
+	void evaluate();
 };
 
 
