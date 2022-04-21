@@ -17,16 +17,19 @@ protected:
 	const static std::map<std::string, int> cardValMap;
 
 	// Vector of the original hand
-	std::vector<std::string> cards{ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+	std::vector<std::string> cards;
 
 	// Card selection strategy object
 	Strategy* strategy = NULL;
 
 	
 public:
+	// Constructor and destructor 
+	CardHolder();
+	~CardHolder();
+
 	// Function to play a card from hand
 	std::string play();
-	~CardHolder();
 };
 
 
@@ -38,12 +41,10 @@ class Croupier : public CardHolder{
 
 private:
 	// Map to store the score of computer and human
-	std::map<std::string, int> scoringMap = {
-		{"computer", 0},
-		{"human", 0}
-	};
+	std::map<std::string, int> scoringMap;
 
 public:
+	// Constructor
 	Croupier();
 
 	// Function to compare the cards and assign scores
