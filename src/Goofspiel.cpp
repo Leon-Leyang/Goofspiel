@@ -28,8 +28,14 @@ void Goofspiel::startNewRound(){
 		cout << "Computer: " << cCard << endl;
 		string hCard = human.play();
 		cout << "Human: " << hCard << endl;
+
+        computer.observePattern(getRound(), pCard, hCard);
 	}
 
+    startAnotherRound();
+}
+
+void Goofspiel::startAnotherRound(){
     string choice;
     cout << "Do you want to play for another round(yes/no): ";
     cin >> choice;
@@ -38,4 +44,8 @@ void Goofspiel::startNewRound(){
     }else{
         cout << "Bye!!" << endl;
     } 
+}
+
+int Goofspiel::getRound(){
+    return round;
 }

@@ -4,7 +4,9 @@
 using namespace std;
 
 void Observer::update(const int& round, const string& pCard, const string& hCard){
-    cout << "update" << endl;
+    cout << "round" << round << endl;
+    cout << "pcard" << pCard << endl;
+    cout << "hcard" << hCard << endl;
 }
 
 vector<tuple<string, string>> Observer::getPreference(){
