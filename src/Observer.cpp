@@ -3,12 +3,32 @@
 
 using namespace std;
 
-// Function to update the recordMatrix
+// Function to update the recordMatrix and the preference
 void Observer::update(const int& round, const string& pCard, const string& hCard){
+    // Update the recordMatrix
     recordMatrix[round - 1][pCard] = hCard;
+
+    if(preference.size() > 0){
+        // Delete element in preference with pCard as key 
+        preference.erase(pCard);
+        cout << "Erase preference with pCard: " << pCard << endl;
+
+        // Delete element in preference with hCard as value 
+        auto it = preference.begin();
+        while (it != preference.end()){
+            if (it->second == hCard){
+                it = preference.erase(it);
+                cout << "Erase preference with hCard: " << hCard << endl;
+                break;
+            }else{
+                it++;
+            }
+        }
+    }
+
 }
 
-// Function to create a new Row and push it to the back of the recordMatrix
+// Function to calculate user's preference from previous play and create a new Row in the recordMatrix for a new round of observation
 void Observer::create(){
     Row row = { 
                 {"A", ""},
@@ -26,6 +46,15 @@ void Observer::create(){
                 {"K", "" },
               };
     recordMatrix.push_back(row);
+}
+
+// Function to calculate user's preference
+void Observer::calc(){
+    if(recordMatrix.size() >= 2){
+        cout << "calculate preference" << endl;
+    }else{
+        cout << "Too small for learning" << endl;
+    }
 }
 
 // Function to calculate user's preference play for specific prize card

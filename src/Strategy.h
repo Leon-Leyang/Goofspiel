@@ -24,5 +24,8 @@ public:
 	virtual std::string selectCard(const std::vector<std::string>& cards) const;
 };
 
+// Derived class for learning strategy
+ 
+
 
 #endif

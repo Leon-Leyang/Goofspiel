@@ -80,6 +80,11 @@ void Computer::startNewObserve(){
 	observer.create();
 }
 
+// Function to learn user's playing preference
+void Computer::learn(){
+	observer.calc();
+}
+
 // Function to call the observer to update the record and observe user's pattern 
 void Computer::observePattern(const int& round, const std::string& pCard, const std::string& hCard){
 	observer.update(round, pCard, hCard);

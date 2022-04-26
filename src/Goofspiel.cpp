@@ -18,6 +18,9 @@ void Goofspiel::startNewRound(){
     computer.getNewSuit();
     human.getNewSuit();
 
+    // Let the computer learn from user
+    computer.learn();
+
     // Let the computer start a new round of observation
     computer.startNewObserve();
 
