@@ -29,4 +29,13 @@ void Goofspiel::startNewRound(){
 		string hCard = human.play();
 		cout << "Human: " << hCard << endl;
 	}
+
+    string choice;
+    cout << "Do you want to play for another round(yes/no): ";
+    cin >> choice;
+    if(choice == "yes"){
+        startNewRound();
+    }else{
+        cout << "Bye!!" << endl;
+    } 
 }
