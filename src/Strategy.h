@@ -12,7 +12,7 @@ class Strategy {
 public:
 	// Function to select a card from hand according to the situation and return the selection
 	// Pure virtual function that shall be defined in derived class
-	virtual std::string const selectCard(const std::vector<std::string>& cards) = 0;
+	virtual std::string selectCard(const std::vector<std::string>& cards)  const = 0;
 };
 
 
@@ -21,7 +21,7 @@ class RandomStrategy : public Strategy{
 
 public:
 	// Function to select a card randomly
-	virtual std::string const selectCard(const std::vector<std::string>& cards);
+	virtual std::string selectCard(const std::vector<std::string>& cards) const;
 };
 
 

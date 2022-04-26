@@ -7,6 +7,8 @@
 
 using namespace std;
 
+
+
 int main() {
 
 	// Set the seed
@@ -17,18 +19,13 @@ int main() {
 	Computer computer;
 	Human human;
 
-	// for (int i = 0; i < 13; i++) {
-	// 	string pCard = croupier.play();
-	// 	cout << "Prize: " << pCard << endl;
-	// 	string cCard = computer.play();
-	// 	cout << "Computer: " << cCard << endl;
-	// 	string hCard = human.play();
-	// 	cout << "Human: " << hCard << endl;
-	// }
 
+
+	// Initialize the game
 	Goofspiel goofspiel(croupier, computer, human);
 
 	goofspiel.startNewRound();
+
 
 
 	return 0;

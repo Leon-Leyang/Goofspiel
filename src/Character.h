@@ -8,6 +8,7 @@
 #include <string>
 #include <map>
 #include "Strategy.h"
+#include "Observer.h"
 
 // Base class for the character that holds a suit of card at the beginning
 class CardHolder {
@@ -25,11 +26,14 @@ protected:
 	
 public:
 	// Constructor and destructor 
-	CardHolder();
+	// CardHolder();
 	~CardHolder();
 
 	// Function to play a card from hand
 	std::string play();
+
+	// Function to get a new suit
+	void getNewSuit();
 };
 
 
@@ -52,12 +56,21 @@ class Computer : public CardHolder{
 public:
 	// Constructor
 	Computer();
+
+	// Function to observe user's playing pattern
+	void observePattern(const int& round, const std::string& pCard, const std::string& hCard);
+private:
+	Observer observer;
 };
 
 class Human : public CardHolder{
 public:
 	// Function to ask user to play a card from hand
 	std::string play();
+
+private:
+	// Function to show current hand to player
+	void showHand();
 };
 
 

@@ -23,10 +23,9 @@ const map<string, int> CardHolder::cardValMap = {
 												};
 
 // Constructor for CardHolder
-CardHolder::CardHolder() {
-	vector<string> cardsTemp{ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-	cards = cardsTemp;
-}
+// CardHolder::CardHolder() {
+// 	getNewSuit();
+// }
 
 // Destructor for CardHolder
 CardHolder::~CardHolder() {
@@ -44,6 +43,12 @@ string CardHolder::play() {
 	cards.erase(cards.begin() + index);
 	
 	return card;
+}
+
+// Function to get a new suit
+void CardHolder::getNewSuit(){
+	vector<string> cardsTemp{ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+	cards = cardsTemp;
 }
 
 // Constructor for Croupier
@@ -76,15 +81,21 @@ Computer::Computer() {
 }
 
 
+// Function to call the observer to update the record and observe user's pattern 
+void Computer::observePattern(const int& round, const std::string& pCard, const std::string& hCard){
+	observer.update(round, pCard, hCard);
+}
+
+
 // Function to ask user to play a card from hand
 string Human::play(){
 	string card;
 
-	cout << "Your current hand: ";
-	for(auto & elem : cards){
-        cout<<elem<<", ";
-    }
+	showHand();
+
+
 	cout << endl;
+
 	cout << "Please enter the card you want to play for this round: ";
 	cin >> card;
 
@@ -94,4 +105,11 @@ string Human::play(){
 	cards.erase(cards.begin() + index);
 
 	return card;
+}
+
+void Human::showHand(){
+	cout << "Your current hand: ";
+	for(auto & elem : cards){
+        cout<<elem<<", ";
+    }
 }

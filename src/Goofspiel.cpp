@@ -14,13 +14,14 @@ void Goofspiel::startNewRound(){
     round++;
 
     // Ask each one in the game to get a new suit
-    // croupier.getNewSuit();
-    // computer.getNewSuit();
-    // human.getNewSuit();
+    croupier.getNewSuit();
+    computer.getNewSuit();
+    human.getNewSuit();
 
 
     // Start the game
     for (int i = 0; i < 13; i++) {
+
 		string pCard = croupier.play();
 		cout << "Prize: " << pCard << endl;
 		string cCard = computer.play();
