@@ -3,12 +3,12 @@
 
 using namespace std;
 
+// Function to update the recordMatrix
 void Observer::update(const int& round, const string& pCard, const string& hCard){
-    cout << "round" << round << endl;
-    cout << "pcard" << pCard << endl;
-    cout << "hcard" << hCard << endl;
+    recordMatrix[round - 1][pCard] = hCard;
 }
 
+// Function to create a new Row and push it to the back of the recordMatrix
 void Observer::create(){
     Row row = { 
                 {"A", ""},
@@ -25,12 +25,12 @@ void Observer::create(){
                 {"Q", "" },
                 {"K", "" },
               };
-
     recordMatrix.push_back(row);
-    cout << recordMatrix[0]["A"] << endl;
 }
 
-vector<tuple<string, string>> Observer::getPreference(){
-    vector<tuple<string, string>> test;
-    return test;
+// Function to calculate user's preference play for specific prize card
+Row Observer::getPreference(){
+    Row row;
+    cout << row.size() << endl;
+    return row;
 }
