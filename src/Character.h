@@ -25,8 +25,7 @@ protected:
 
 	
 public:
-	// Constructor and destructor 
-	// CardHolder();
+	// Destructor 
 	~CardHolder();
 
 	// Function to play a card from hand

@@ -22,11 +22,6 @@ const map<string, int> CardHolder::cardValMap = {
 													{"K", 13 },
 												};
 
-// Constructor for CardHolder
-// CardHolder::CardHolder() {
-// 	getNewSuit();
-// }
-
 // Destructor for CardHolder
 CardHolder::~CardHolder() {
 	delete strategy;
