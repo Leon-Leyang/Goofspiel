@@ -13,15 +13,17 @@ void Goofspiel::startNewRound(){
     // Increase the round counter
     round++;
 
-    // Ask each one in the game to get a new suit
+    // Let each character in the game to get a new suit
     croupier.getNewSuit();
     computer.getNewSuit();
     human.getNewSuit();
 
+    // Let the computer start a new round of observation
+    computer.startNewObserve();
 
     // Start the game
     for (int i = 0; i < 13; i++) {
-
+        
 		string pCard = croupier.play();
 		cout << "Prize: " << pCard << endl;
 		string cCard = computer.play();
@@ -29,6 +31,7 @@ void Goofspiel::startNewRound(){
 		string hCard = human.play();
 		cout << "Human: " << hCard << endl;
 
+        // Let the computer observe user's playing pattern
         computer.observePattern(getRound(), pCard, hCard);
 	}
 

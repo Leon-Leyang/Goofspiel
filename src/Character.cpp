@@ -75,6 +75,10 @@ Computer::Computer() {
 	strategy = randomStrategy;
 }
 
+// Function to start a round of observation
+void Computer::startNewObserve(){
+	observer.create();
+}
 
 // Function to call the observer to update the record and observe user's pattern 
 void Computer::observePattern(const int& round, const std::string& pCard, const std::string& hCard){

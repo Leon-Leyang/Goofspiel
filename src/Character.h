@@ -56,6 +56,9 @@ public:
 	// Constructor
 	Computer();
 
+	// Function to start a round of observation
+	void startNewObserve();
+
 	// Function to observe user's playing pattern
 	void observePattern(const int& round, const std::string& pCard, const std::string& hCard);
 private:
