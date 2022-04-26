@@ -3,6 +3,7 @@
 #include <ctime>
 #include "Character.h"
 #include "Strategy.h"
+#include "Goofspiel.h"
 
 using namespace std;
 
@@ -16,14 +17,18 @@ int main() {
 	Computer computer;
 	Human human;
 
-	for (int i = 0; i < 13; i++) {
-		string pCard = croupier.play();
-		cout << "Prize: " << pCard << endl;
-		string cCard = computer.play();
-		cout << "Computer: " << cCard << endl;
-		string hCard = human.play();
-		cout << "Human: " << hCard << endl;
-	}
+	// for (int i = 0; i < 13; i++) {
+	// 	string pCard = croupier.play();
+	// 	cout << "Prize: " << pCard << endl;
+	// 	string cCard = computer.play();
+	// 	cout << "Computer: " << cCard << endl;
+	// 	string hCard = human.play();
+	// 	cout << "Human: " << hCard << endl;
+	// }
+
+	Goofspiel goofspiel(croupier, computer, human);
+
+	goofspiel.startNewRound();
 
 
 	return 0;
