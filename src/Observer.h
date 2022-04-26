@@ -1,11 +1,13 @@
 #include <tuple>
 #include <vector>
 #include <string>
+#include <map>
 
-// Define Matrix to be a 2d vector of int
-typedef std::vector< std::vector<std::string> > Matrix;
-// Define Row to be a vector of int
-typedef std::vector<std::string> Row;
+// Define Matrix to be a vector of map from string to string
+typedef std::vector< std::map<std::string, std::string> > Matrix;
+
+// Define Row to be a map from string to string
+typedef std::map<std::string, std::string> Row;
 
 class Observer {
 public:
