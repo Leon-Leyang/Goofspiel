@@ -10,8 +10,9 @@ void Observer::update(const int& round, const string& pCard, const string& hCard
 
     if(preference.size() > 0){
         // Delete element in preference with pCard as key 
-        preference.erase(pCard);
-        cout << "Erase preference with pCard: " << pCard << endl;
+        if(preference.erase(pCard)){
+            cout << "Erase preference with pCard: " << pCard << endl;
+        }
 
         // Delete element in preference with hCard as value 
         auto it = preference.begin();
@@ -50,24 +51,134 @@ void Observer::create(){
 
 // Function to calculate user's preference
 void Observer::calc(){
+    // Clear the previous calculated preference
+    preference.clear();
+
+
+    // Row row1 = { 
+    //             {"A", "3"},
+    //             {"2", "2" },
+    //             {"3", "4" },
+    //             {"4", "K" },
+    //             {"5", "Q" },
+    //             {"6", "J" },
+    //             {"7", "10" },
+    //             {"8", "9" },
+    //             {"9", "8" },
+    //             {"10", "7" },
+    //             {"J", "6" },
+    //             {"Q", "5" },
+    //             {"K", "A" },
+    // };
+    // recordMatrix.push_back(row1);
+
+    // Row row2 = { 
+    //             {"A", "A"},
+    //             {"2", "2" },
+    //             {"3", "4" },
+    //             {"4", "8" },
+    //             {"5", "6" },
+    //             {"6", "5" },
+    //             {"7", "J" },
+    //             {"8", "Q" },
+    //             {"9", "K" },
+    //             {"10", "9" },
+    //             {"J", "7" },
+    //             {"Q", "10" },
+    //             {"K", "3" },
+    // };
+    // recordMatrix.push_back(row2);
+
+    // Row row3 = { 
+    //             {"A", "2"},
+    //             {"2", "3" },
+    //             {"3", "4" },
+    //             {"4", "5" },
+    //             {"5", "6" },
+    //             {"6", "7" },
+    //             {"7", "8" },
+    //             {"8", "9" },
+    //             {"9", "10" },
+    //             {"10", "J" },
+    //             {"J", "Q" },
+    //             {"Q", "K" },
+    //             {"K", "A" },
+    // };
+    // recordMatrix.push_back(row3);
+
+    // Row row4 = { 
+    //             {"A", "2"},
+    //             {"2", "4" },
+    //             {"3", "5" },
+    //             {"4", "6" },
+    //             {"5", "7" },
+    //             {"6", "8" },
+    //             {"7", "9" },
+    //             {"8", "10" },
+    //             {"9", "J" },
+    //             {"10", "Q" },
+    //             {"J", "K" },
+    //             {"Q", "A" },
+    //             {"K", "3" },
+    // };
+    // recordMatrix.push_back(row4);
+
+    // Row row5 = { 
+    //             {"A", "2"},
+    //             {"2", "5" },
+    //             {"3", "6" },
+    //             {"4", "7" },
+    //             {"5", "8" },
+    //             {"6", "9" },
+    //             {"7", "10" },
+    //             {"8", "J" },
+    //             {"9", "Q" },
+    //             {"10", "K" },
+    //             {"J", "A" },
+    //             {"Q", "3" },
+    //             {"K", "4" },
+    // };
+    // recordMatrix.push_back(row5);
+
+    
+
+    
     if(recordMatrix.size() >= 2){
         cout << "calculate preference" << endl;
-        // Row hCard4pCard = calcHCard4PCard();
+        Row hCard4pCard = calcHCard4PCard();
         Row pCard4hCard = calcPCard4HCard();
+
+        // auto it = hCard4pCard.begin();
+        // while(it != hCard4pCard.end()){
+        //     cout << it->first << ": " << it->second << endl;
+        //     it++;
+        // }
+
+        // it = pCard4hCard.begin();
+        // while(it != pCard4hCard.end()){
+        //     cout << it->first << ": " << it->second << endl;
+        //     it++;
+        // }
 
         auto it = hCard4pCard.begin();
         while(it != hCard4pCard.end()){
-            cout << it->first << ": " << it->second << endl;
+            string pCard = it->first;
+            string hCard = it->second;
+
+            string pCardBid = pCard4hCard[hCard];
+
+            if(pCard == pCardBid){
+                preference[pCard] = hCard;
+            }
+
             it++;
         }
 
-        it = pCard4hCard.begin();
-        while(it != pCard4hCard.end()){
-            cout << it->first << ": " << it->second << endl;
+        it = preference.begin();
+        while(it != preference.end()){
+            cout << "P: " << it->first << " ; H: " << it->second << endl;
             it++;
         }
-
-
 
 
     }else{
