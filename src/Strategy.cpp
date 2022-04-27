@@ -116,18 +116,22 @@ string HybridStrategy::selectCard(const vector<string>& cards) const{
 
 			// If the card exist, return the card
 			if(find(cards.begin(), cards.end(), cCard) != cards.end()){
-				cout << "exist" << endl;
+				// Only for testing
+				// cout << "exist" << endl;
 				return cCard;
 			}else{	// If the card does not exist, select card randomly from current hand removing all possible cards that could be used in the future
-				cout << "don't exist" << endl;
+				// Only for testing
+				// cout << "don't exist" << endl;
 				return RandomStrategy::selectCard(removePossibleCards(cards));
 			}
 		}else{	// If the prize card is not recorded in the preference, select card randomly from current hand removing all possible cards that could be used in the future	
-			cout << "no this prize card in preference" << endl;
+			// Only for testing
+			// cout << "no this prize card in preference" << endl;
 			return RandomStrategy::selectCard(removePossibleCards(cards));
 		}
 	}else{	// If no preference information available, select card randomly 
-		cout << "no preference" << endl;
+		// Only for testing
+		// cout << "no preference" << endl;
 		return RandomStrategy::selectCard(cards);
 	}
 }

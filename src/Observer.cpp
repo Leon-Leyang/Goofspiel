@@ -12,7 +12,8 @@ void Observer::update(const int& round, const string& pCard, const string& hCard
     if(preference.size() > 0){
         // Delete element in preference with pCard as key 
         if(preference.erase(pCard)){
-            cout << "Erase preference with pCard: " << pCard << endl;
+            // Only for testing
+            // cout << "Erase preference with pCard: " << pCard << endl;
         }
 
         // Delete element in preference with hCard as value 
@@ -20,7 +21,8 @@ void Observer::update(const int& round, const string& pCard, const string& hCard
         while (it != preference.end()){
             if (it->second == hCard){
                 it = preference.erase(it);
-                cout << "Erase preference with hCard: " << hCard << endl;
+                // Only for testing
+                // cout << "Erase preference with hCard: " << hCard << endl;
                 break;
             }else{
                 it++;
@@ -32,7 +34,8 @@ void Observer::update(const int& round, const string& pCard, const string& hCard
 	auto it1 = find(hCards.begin(), hCards.end(), hCard);
 	int index = it1 - hCards.begin();
 	hCards.erase(hCards.begin() + index);
-    cout << "Remove " << hCard << " from user's left cards" << endl;
+    // Only for testing
+    // cout << "Remove " << hCard << " from user's left cards" << endl;
 }
 
 // Function to create a new Row, push it to the back of the recordMatrix and renew the left cards in user's hand
@@ -57,7 +60,8 @@ void Observer::create(){
     // Initialize user's left cards
     vector<string> hCardsTemp{ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 	hCards = hCardsTemp;
-    cout << "Renew user's left cards" << endl;
+    // Only for testing
+    // cout << "Renew user's left cards" << endl;
 }
 
 // Function to calculate user's preference
@@ -189,7 +193,8 @@ void Observer::calc(){
 
     // Only calculate user's preference when there have been more than one round
     if(recordMatrix.size() >= 2){
-        cout << "calculate preference" << endl;
+        // Only for testing
+        // cout << "calculate preference" << endl;
 
         // Calculate for each prize card the user's most frequently used card
         Row hCard4pCard = calcHCard4PCard();
@@ -229,15 +234,16 @@ void Observer::calc(){
         }
 
         // Only for testing
-        it = preference.begin();
-        while(it != preference.end()){
-            cout << "P: " << it->first << " ; H: " << it->second << endl;
-            it++;
-        }
+        // it = preference.begin();
+        // while(it != preference.end()){
+        //     cout << "P: " << it->first << " ; H: " << it->second << endl;
+        //     it++;
+        // }
 
 
     }else{
-        cout << "Too small for learning" << endl;
+        // Only for testing
+        // cout << "Too small for learning" << endl;
     }
 }
 
@@ -410,7 +416,8 @@ string Observer::getPCard(){
 // Setter for the pCard
 void Observer::setPCard(string PCard){
     pCard = PCard;
-    cout << "Update the prize card" << endl;
+    // Only for testing
+    // cout << "Update the prize card" << endl;
 }
 
 // Getter for the hCards
