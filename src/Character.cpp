@@ -20,7 +20,7 @@ const map<string, int> CardHolder::cardValMap = {
 													{"J", 11 },
 													{"Q", 12 },
 													{"K", 13 },
-												};
+};
 
 // Destructor for CardHolder
 CardHolder::~CardHolder() {

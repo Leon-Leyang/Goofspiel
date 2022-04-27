@@ -20,6 +20,12 @@ public:
 	// Function to calculate user's preference
 	void calc();
 
+	// Function to calculate the Row whose key is the prize card and value is user's card that is used most frequently to bid this prize card
+	Row calcHCard4PCard();
+
+	// Function to calculate the Row whose key is the user's card and value is the prize card that is most frequently being bid by this card
+	Row calcPcard4HCard();
+
 	// Function to calculate user's preference play for specific prize card
 	Row getPreference();
 
