@@ -5,8 +5,6 @@
 using namespace std;
 
 
-
-
 // Map to store the mapping between a card and its value
 const map<string, int> Strategy::cardValMap = {
 													{"A", 1},
@@ -25,8 +23,6 @@ const map<string, int> Strategy::cardValMap = {
 };
 
 
-
-
 // Function to select a card randomly
 string RandomStrategy::selectCard(const vector<string>& cards) const{
 	// Generate a random index from 0 to size of the hand - 1
@@ -40,9 +36,9 @@ string RandomStrategy::selectCard(const vector<string>& cards) const{
 	return card;
 }
 
+
+// Constructor
 HybridStrategy::HybridStrategy(Observer& observerRef): observer(observerRef){}
-
-
 
 
 // Funtion to calculate the card whose value is 1 bigger than the given card
@@ -68,9 +64,6 @@ string HybridStrategy::findLargerCard(string card) const{
 }
 
 
-
-
-
 // Funtion to return computer's cards removing all possible cards that might be 1 bigger than user's preferred cards
 vector<string> HybridStrategy::removePossibleCards(const vector<string>& cards) const{
 	vector<string> copy = cards;
@@ -80,16 +73,16 @@ vector<string> HybridStrategy::removePossibleCards(const vector<string>& cards) 
 
 	auto it = preference.begin();
 	while(it != preference.end()){
+		// Get the card that is 1 bigger than user's preferred card
 		string hCard = it->second;
 		string cCard = findLargerCard(hCard);
 
-		// Remove the card from copy
+		// Remove the card from copy if it exists
 		auto it1 = find(copy.begin(), copy.end(), cCard);
 		if(it1 != copy.end()){
 			int index = it1 - copy.begin();
 			copy.erase(copy.begin() + index);
 		}
-		
 		
 		it++;
 	}
@@ -98,11 +91,7 @@ vector<string> HybridStrategy::removePossibleCards(const vector<string>& cards) 
 }
 
 
-
-
-
-
-
+// Function to select a card based on the observation of user
 string HybridStrategy::selectCard(const vector<string>& cards) const{
 	// Get the preference information from the observer
 	Row preference = observer.getPreference();
@@ -112,10 +101,6 @@ string HybridStrategy::selectCard(const vector<string>& cards) const{
 
 	// Get user's left card in hand
 	vector<string> hCards = observer.getHCards();
-
-
-
-
 
 	// If there is preference information available,
 	if(preference.size() > 0){
@@ -133,19 +118,15 @@ string HybridStrategy::selectCard(const vector<string>& cards) const{
 			if(find(cards.begin(), cards.end(), cCard) != cards.end()){
 				cout << "exist" << endl;
 				return cCard;
-			}else{
+			}else{	// If the card does not exist, select card randomly from current hand removing all possible cards that could be used in the future
 				cout << "don't exist" << endl;
 				return RandomStrategy::selectCard(removePossibleCards(cards));
 			}
-
-		}else{
+		}else{	// If the prize card is not recorded in the preference, select card randomly from current hand removing all possible cards that could be used in the future	
 			cout << "no this prize card in preference" << endl;
 			return RandomStrategy::selectCard(removePossibleCards(cards));
 		}
-
-
-
-	}else{
+	}else{	// If no preference information available, select card randomly 
 		cout << "no preference" << endl;
 		return RandomStrategy::selectCard(cards);
 	}
