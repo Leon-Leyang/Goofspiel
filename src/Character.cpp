@@ -69,9 +69,9 @@ void Croupier::evaluate() {
 
 // Constructor for Computer
 Computer::Computer() {
-	// Initialize the strategy to be the random strategy
-	RandomStrategy* randomStrategy = new RandomStrategy();
-	strategy = randomStrategy;
+	// Initialize the strategy to be the mixed strategy
+	HybridStrategy* hybridStrategy = new HybridStrategy(observer);
+	strategy = hybridStrategy;
 }
 
 // Function to start a round of observation

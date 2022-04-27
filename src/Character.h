@@ -8,14 +8,11 @@
 #include <string>
 #include <map>
 #include "Strategy.h"
-#include "Observer.h"
 
 // Base class for the character that holds a suit of card at the beginning
 class CardHolder {
 
 protected:
-	// Map to store the mapping between a card and its value
-	const static std::map<std::string, int> cardValMap;
 
 	// Vector of the original hand
 	std::vector<std::string> cards;
@@ -27,6 +24,9 @@ protected:
 public:
 	// Destructor 
 	~CardHolder();
+
+	// Map to store the mapping between a card and its value
+	const static std::map<std::string, int> cardValMap;
 
 	// Function to play a card from hand
 	std::string play();

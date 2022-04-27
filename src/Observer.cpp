@@ -151,6 +151,40 @@ void Observer::calc(){
     // };
     // recordMatrix.push_back(row5);
 
+
+    // Row row1 = { 
+    //             {"A", "A"},
+    //             {"2", "2" },
+    //             {"3", "3" },
+    //             {"4", "4" },
+    //             {"5", "5" },
+    //             {"6", "6" },
+    //             {"7", "7" },
+    //             {"8", "8" },
+    //             {"9", "9" },
+    //             {"10", "10" },
+    //             {"J", "J" },
+    //             {"Q", "Q" },
+    //             {"K", "K" },
+    // };
+    // recordMatrix.push_back(row1);
+    // Row row2 = { 
+    //             {"A", "A"},
+    //             {"2", "2" },
+    //             {"3", "3" },
+    //             {"4", "4" },
+    //             {"5", "5" },
+    //             {"6", "6" },
+    //             {"7", "7" },
+    //             {"8", "8" },
+    //             {"9", "9" },
+    //             {"10", "10" },
+    //             {"J", "J" },
+    //             {"Q", "Q" },
+    //             {"K", "K" },
+    // };
+    // recordMatrix.push_back(row2);
+
     
 
     // Only calculate user's preference when there have been more than one round
@@ -195,11 +229,11 @@ void Observer::calc(){
         }
 
         // Only for testing
-        // it = preference.begin();
-        // while(it != preference.end()){
-        //     cout << "P: " << it->first << " ; H: " << it->second << endl;
-        //     it++;
-        // }
+        it = preference.begin();
+        while(it != preference.end()){
+            cout << "P: " << it->first << " ; H: " << it->second << endl;
+            it++;
+        }
 
 
     }else{
@@ -365,9 +399,7 @@ Row Observer::calcPCard4HCard(){
 
 // Function to calculate user's preference play for specific prize card
 Row Observer::getPreference(){
-    Row row;
-    cout << row.size() << endl;
-    return row;
+    return preference;
 }
 
 // Getter for the pCard
