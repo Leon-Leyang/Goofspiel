@@ -62,8 +62,11 @@ public:
 	// Function to learn user's playing preference
 	void learn();
 
-	// Function to observe user's playing pattern
-	void observePattern(const int& round, const std::string& pCard, const std::string& hCard);
+	// Function to observe user's playing pattern and left hand
+	void observe(const int& round, const std::string& pCard, const std::string& hCard);
+
+	// Function to observe the prize card this round
+	void observe(const std::string& pCard);
 private:
 	Observer observer;
 };

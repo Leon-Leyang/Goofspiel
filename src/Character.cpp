@@ -67,7 +67,6 @@ void Croupier::evaluate() {
 }
 
 
-
 // Constructor for Computer
 Computer::Computer() {
 	// Initialize the strategy to be the random strategy
@@ -85,11 +84,15 @@ void Computer::learn(){
 	observer.calc();
 }
 
-// Function to call the observer to update the record and observe user's pattern 
-void Computer::observePattern(const int& round, const std::string& pCard, const std::string& hCard){
+// Function to call the observer to update the record, observe user's pattern and left cards in hand 
+void Computer::observe(const int& round, const string& pCard, const string& hCard){
 	observer.update(round, pCard, hCard);
 }
 
+// Function to observe the prize card this round
+void Computer::observe(const string& pCard){
+	observer.setPCard(pCard);
+}
 
 // Function to ask user to play a card from hand
 string Human::play(){

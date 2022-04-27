@@ -18,7 +18,7 @@ void Goofspiel::startNewRound(){
     computer.getNewSuit();
     human.getNewSuit();
 
-    // Let the computer learn from user
+    // Let the computer learn from user's previous play
     computer.learn();
 
     // Let the computer start a new round of observation
@@ -29,13 +29,16 @@ void Goofspiel::startNewRound(){
         
 		string pCard = croupier.play();
 		cout << "Prize: " << pCard << endl;
+
+        computer.observe(pCard);
+
 		string cCard = computer.play();
 		cout << "Computer: " << cCard << endl;
 		string hCard = human.play();
 		cout << "Human: " << hCard << endl;
 
-        // Let the computer observe user's playing pattern
-        computer.observePattern(getRound(), pCard, hCard);
+        // Let the computer observe user's playing pattern and left hand
+        computer.observe(getRound(), pCard, hCard);
 	}
 
     startAnotherRound();

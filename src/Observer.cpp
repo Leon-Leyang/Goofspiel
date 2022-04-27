@@ -1,9 +1,10 @@
 #include "Observer.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
-// Function to update the recordMatrix and the preference
+// Function to update the recordMatrix, the preference and left cards in user's hand
 void Observer::update(const int& round, const string& pCard, const string& hCard){
     // Update the recordMatrix
     recordMatrix[round - 1][pCard] = hCard;
@@ -27,9 +28,14 @@ void Observer::update(const int& round, const string& pCard, const string& hCard
         }
     }
 
+    // Remove the card from user's left cards
+	auto it1 = find(hCards.begin(), hCards.end(), hCard);
+	int index = it1 - hCards.begin();
+	hCards.erase(hCards.begin() + index);
+    cout << "Remove " << hCard << " from user's left cards" << endl;
 }
 
-// Function to calculate user's preference from previous play and create a new Row in the recordMatrix for a new round of observation
+// Function to create a new Row, push it to the back of the recordMatrix and renew the left cards in user's hand
 void Observer::create(){
     Row row = { 
                 {"A", ""},
@@ -47,6 +53,11 @@ void Observer::create(){
                 {"K", "" },
     };
     recordMatrix.push_back(row);
+
+    // Initialize user's left cards
+    vector<string> hCardsTemp{ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+	hCards = hCardsTemp;
+    cout << "Renew user's left cards" << endl;
 }
 
 // Function to calculate user's preference
@@ -357,4 +368,20 @@ Row Observer::getPreference(){
     Row row;
     cout << row.size() << endl;
     return row;
+}
+
+// Getter for the pCard
+string Observer::getPCard(){
+    return pCard;
+}
+
+// Setter for the pCard
+void Observer::setPCard(string PCard){
+    pCard = PCard;
+    cout << "Update the prize card" << endl;
+}
+
+// Getter for the hCards
+vector<string> Observer::getHCards(){
+    return hCards;
 }

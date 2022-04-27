@@ -15,3 +15,4 @@ string RandomStrategy::selectCard(const vector<string>& cards) const{
 
 	return card;
 }
+

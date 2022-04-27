@@ -11,10 +11,10 @@ typedef std::map<std::string, std::string> Row;
 
 class Observer {
 public:
-	// Function to update the recordMatrix and the preference
+	// Function to update the recordMatrix, the preference and left cards in user's hand
 	void update(const int& round, const std::string& pCard, const std::string& hCard);
 
-	// Function to create a new Row and push it to the back of the recordMatrix
+	// Function to create a new Row, push it to the back of the recordMatrix and renew the left cards in user's hand
 	void create();
 
 	// Function to calculate user's preference
@@ -29,10 +29,23 @@ public:
 	// Function to calculate user's preference play for specific prize card
 	Row getPreference();
 
+	// Getter and setter for the pCard
+	std::string getPCard();
+	void setPCard(std::string PCard);
+
+	// Getter for the hCards
+	std::vector<std::string> getHCards();
+
 private:
 	// The Matrix to record user's plays each round
     Matrix recordMatrix;
 
 	// The Row of user's preference
 	Row preference;
+
+	// The prize card this round
+	std::string pCard;
+
+	// The vector to record left cards in user's hand
+	std::vector<std::string> hCards;
 };

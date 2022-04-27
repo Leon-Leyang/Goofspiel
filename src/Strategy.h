@@ -24,8 +24,12 @@ public:
 	virtual std::string selectCard(const std::vector<std::string>& cards) const;
 };
 
-// Derived class for learning strategy
- 
+// Derived class for learning and random mixed strategy
+// class MixedStrategy : public RandomStrategy{
+// public:
+// 	// Function to select a card based on the observation of user
+// 	virtual std::string selectCard(const std::vector<std::string>& cards) const;
+//  };
 
 
 #endif
