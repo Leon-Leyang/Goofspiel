@@ -52,11 +52,17 @@ void Observer::create(){
 void Observer::calc(){
     if(recordMatrix.size() >= 2){
         cout << "calculate preference" << endl;
-        Row pCard2hCard = calcHCard4PCard();
-        Row hCard2pCard = calcPcard4HCard();
+        // Row hCard4pCard = calcHCard4PCard();
+        Row pCard4hCard = calcPCard4HCard();
 
-        auto it = pCard2hCard.begin();
-        while(it != pCard2hCard.end()){
+        auto it = hCard4pCard.begin();
+        while(it != hCard4pCard.end()){
+            cout << it->first << ": " << it->second << endl;
+            it++;
+        }
+
+        it = pCard4hCard.begin();
+        while(it != pCard4hCard.end()){
             cout << it->first << ": " << it->second << endl;
             it++;
         }
@@ -96,6 +102,8 @@ Row Observer::calcHCard4PCard(){
     while (it != row.end()){
         string pCard = it->first;
         string hCard;
+
+        // Initialize the counter
         counter = {
                 {"A", 0},
                 {"2", 0 },
@@ -112,13 +120,14 @@ Row Observer::calcHCard4PCard(){
                 {"K", 0 },
         };
 
+        // Interate through all rounds and count different cards used to bid the current prize card
         for(int i = 0; i < recordMatrix.size(); i++){
             hCard = recordMatrix[i][pCard];
             counter[hCard] += 1;
         }
 
+        // Interate through the counter to find the most frequently used card to bid the current prize card
         int maxCount = 0;
-
         auto counterIt = counter.begin();
         while (counterIt != counter.end()){
             if(counterIt->second > maxCount){
@@ -128,6 +137,7 @@ Row Observer::calcHCard4PCard(){
             counterIt++;
         }
 
+        // Record the result
         row[pCard] = hCard;
 
         it++;
@@ -137,9 +147,87 @@ Row Observer::calcHCard4PCard(){
 }
 
 // Function to calculate the Row whose key is the user's card and value is the prize card that is most frequently being bid by this card
-Row Observer::calcPcard4HCard(){
-    Row row;
-    return row;
+Row Observer::calcPCard4HCard(){
+    Row row = { 
+                {"A", ""},
+                {"2", "" },
+                {"3", "" },
+                {"4", "" },
+                {"5", "" },
+                {"6", "" },
+                {"7", "" },
+                {"8", "" },
+                {"9", "" },
+                {"10", "" },
+                {"J", "" },
+                {"Q", "" },
+                {"K", "" },
+    };
+
+
+    // Map to store the time of each prize card being bid as a counter
+    map<string, int> counter;
+
+    // Iterate through all user's cards and find the prize card that is bid most frequently with the corresponding user's card
+    auto it = row.begin();
+    while (it != row.end()){
+        string hCard = it->first;
+        string pCard;
+
+        // Initialize the counter
+        counter = {
+                {"A", 0},
+                {"2", 0 },
+                {"3", 0 },
+                {"4", 0 },
+                {"5", 0 },
+                {"6", 0 },
+                {"7", 0 },
+                {"8", 0 },
+                {"9", 0 },
+                {"10", 0 },
+                {"J", 0 },
+                {"Q", 0 },
+                {"K", 0 },
+        };
+
+        // Interate through all rounds and count different prize card being bid with the current user's card
+        for(int i = 0; i < recordMatrix.size(); i++){
+
+            Row roundRec = recordMatrix[i];
+
+            // Find the prize card that is bid with the current user's hand in this round
+            auto roundIt = roundRec.begin();
+            while (roundIt != roundRec.end()){
+                if(roundIt->second == hCard){
+                    pCard = roundIt->first;
+                    break;
+                }
+                roundIt++;
+            }
+
+            counter[pCard] += 1;
+        }
+
+
+        // Interate through the counter to find the most frequently prize card being bid with the current user's card
+        int maxCount = 0;
+        auto counterIt = counter.begin();
+        while (counterIt != counter.end()){
+            if(counterIt->second > maxCount){
+                maxCount = counterIt->second;
+                pCard = counterIt->first;
+            }
+            counterIt++;
+        }
+
+        // Record the result
+        row[hCard] = pCard;
+
+        it++;
+    }
+
+    return row; 
 }
 
 

@@ -24,7 +24,7 @@ public:
 	Row calcHCard4PCard();
 
 	// Function to calculate the Row whose key is the user's card and value is the prize card that is most frequently being bid by this card
-	Row calcPcard4HCard();
+	Row calcPCard4HCard();
 
 	// Function to calculate user's preference play for specific prize card
 	Row getPreference();
