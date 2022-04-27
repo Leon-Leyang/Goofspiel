@@ -54,7 +54,7 @@ void Observer::calc(){
     // Clear the previous calculated preference
     preference.clear();
 
-
+    // Testing resources
     // Row row1 = { 
     //             {"A", "3"},
     //             {"2", "2" },
@@ -142,24 +142,33 @@ void Observer::calc(){
 
     
 
-    
+    // Only calculate user's preference when there have been more than one round
     if(recordMatrix.size() >= 2){
         cout << "calculate preference" << endl;
+
+        // Calculate for each prize card the user's most frequently used card
         Row hCard4pCard = calcHCard4PCard();
+
+        // Calculate for each user's card the most frequenly bid prize card
         Row pCard4hCard = calcPCard4HCard();
 
+        // Only for testing
         // auto it = hCard4pCard.begin();
         // while(it != hCard4pCard.end()){
         //     cout << it->first << ": " << it->second << endl;
         //     it++;
         // }
-
         // it = pCard4hCard.begin();
         // while(it != pCard4hCard.end()){
         //     cout << it->first << ": " << it->second << endl;
         //     it++;
         // }
 
+        // Compare the two Row above
+        // Get user's preference with the following rule:
+        //      if for a prize card P_a, user most frequently uses H_a to bid
+        //      And for the card H_a, user most frequently uses it to bid for P_a
+        //      Then add <P_a, H_a> to the preference 
         auto it = hCard4pCard.begin();
         while(it != hCard4pCard.end()){
             string pCard = it->first;
@@ -174,11 +183,12 @@ void Observer::calc(){
             it++;
         }
 
-        it = preference.begin();
-        while(it != preference.end()){
-            cout << "P: " << it->first << " ; H: " << it->second << endl;
-            it++;
-        }
+        // Only for testing
+        // it = preference.begin();
+        // while(it != preference.end()){
+        //     cout << "P: " << it->first << " ; H: " << it->second << endl;
+        //     it++;
+        // }
 
 
     }else{
