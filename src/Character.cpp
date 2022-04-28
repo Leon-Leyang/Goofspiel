@@ -55,17 +55,48 @@ Croupier::Croupier() {
 
 // Function to initialize scoringMap
 void Croupier::initScoringMap(){
-	map<std::string, int> scoringMapTemp = {
-		{"computer", 0},
-		{"human", 0}
+	map<std::string, float> scoringMapTemp = {
+		{"computer", 0.0},
+		{"human", 0.0}
 	};
 	scoringMap = scoringMapTemp;
 }
 
 
 // Function to compare the cards and assign the prize
-void Croupier::evaluate() {
-	cout << "eval" << endl;
+void Croupier::evaluate(const string& pCard, const string& cCard, const string& hCard) {
+	int pValue = cardValMap.at(pCard);
+	int cValue = cardValMap.at(cCard);
+ 	int hValue = cardValMap.at(hCard);
+
+	cout << endl << "You played " << hCard << " and the computer played " << cCard << endl;
+
+	if(cValue > hValue){
+		scoringMap["computer"] += pValue;
+		cout << "The computer won this round and gained " << pValue << " point(s)!" << endl;
+	}else if(cValue < hValue){
+		scoringMap["human"] += pValue;
+		cout << "You won this round and gained " << pValue << " point(s)!" << endl;
+	}else{
+		scoringMap["computer"] += static_cast< float > (pValue) / 2;
+		scoringMap["human"] += static_cast< float > (pValue) / 2;
+		cout << "You're tied with the computer this round and both of you gained " << static_cast< float > (pValue) / 2 << " point(s)!" << endl;
+	}
+}
+
+// Function to evaluate the whole game
+void Croupier::evaluate(){
+	cout << "\n--------------------------------------------------------------\n" << endl;
+	cout << "In total, you have gained " << scoringMap["human"] << " points and the computer has gained " << scoringMap["computer"] << " points!" << endl;
+	if(scoringMap["human"] > scoringMap["computer"]){
+		cout << "You won this game ";
+	}else if(scoringMap["human"] < scoringMap["computer"]){
+		cout << "You lost this game ";
+	}else{
+		cout << "You're tied with the computer in this game ";
+	}
+
+	cout << "and your score was " << scoringMap["human"] - scoringMap["computer"] << "!" << endl;
 }
 
 

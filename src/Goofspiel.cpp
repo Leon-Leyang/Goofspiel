@@ -29,7 +29,7 @@ void Goofspiel::startNewRound(){
 
     // Start the game
     for (int i = 0; i < 13; i++) {
-        
+        cout << "\n--------------------------------------------------------------\n" << endl;
 		string pCard = croupier.play();
 		cout << "The prize for this round is: " << pCard << endl;
 
@@ -39,25 +39,28 @@ void Goofspiel::startNewRound(){
 		
 		string hCard = human.play();
 
-        cout << "Computer: " << cCard << endl;
-
-		cout << "Human: " << hCard << endl;
+        // Let the croupier evaluate this round
+        croupier.evaluate(pCard, cCard, hCard);
 
         // Let the computer observe user's playing pattern and left hand
         computer.observe(getRound(), pCard, hCard);
 	}
+
+    // Let the croupier evalute this game
+    croupier.evaluate();
 
     startAnotherRound();
 }
 
 void Goofspiel::startAnotherRound(){
     string choice;
-    cout << "Do you want to play for another round(yes/no): ";
+    cout << "\n--------------------------------------------------------------\n" << endl;
+    cout << "Do you want to play again(yes/no): ";
     cin >> choice;
     if(choice == "yes"){
         startNewRound();
     }else{
-        cout << "Bye!!" << endl;
+        cout << "\nBye!!" << endl;
     } 
 }
 

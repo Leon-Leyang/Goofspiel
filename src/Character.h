@@ -41,13 +41,16 @@ class Croupier : public CardHolder{
 
 private:
 	// Map to store the score of computer and human
-	std::map<std::string, int> scoringMap;
+	std::map<std::string, float> scoringMap;
 
 public:
 	// Constructor
 	Croupier();
 
 	// Function to compare the cards and assign scores
+	void evaluate(const std::string& pCard, const std::string& cCard, const std::string& hCard);
+
+	// Function to evaluate the whole game
 	void evaluate();
 
 	// Function to initialize scoringMap
