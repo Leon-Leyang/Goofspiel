@@ -51,8 +51,10 @@ Croupier::Croupier() {
 	// Initialize the strategy to be the random strategy
 	RandomStrategy* randomStrategy = new RandomStrategy();
 	strategy = randomStrategy;
+}
 
-	// Initialize the scoring map for later recording of the scores
+// Function to initialize scoringMap
+void Croupier::initScoringMap(){
 	map<std::string, int> scoringMapTemp = {
 		{"computer", 0},
 		{"human", 0}

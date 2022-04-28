@@ -49,6 +49,9 @@ public:
 
 	// Function to compare the cards and assign scores
 	void evaluate();
+
+	// Function to initialize scoringMap
+	void initScoringMap();
 };
 
 class Computer : public CardHolder{

@@ -18,6 +18,9 @@ void Goofspiel::startNewRound(){
     computer.getNewSuit();
     human.getNewSuit();
 
+    // Let the croupier initialize the scoring map
+    croupier.initScoringMap();
+
     // Let the computer learn from user's previous play
     computer.learn();
 
@@ -28,13 +31,16 @@ void Goofspiel::startNewRound(){
     for (int i = 0; i < 13; i++) {
         
 		string pCard = croupier.play();
-		cout << "Prize: " << pCard << endl;
+		cout << "The prize for this round is: " << pCard << endl;
 
         computer.observe(pCard);
 
 		string cCard = computer.play();
-		cout << "Computer: " << cCard << endl;
+		
 		string hCard = human.play();
+
+        cout << "Computer: " << cCard << endl;
+
 		cout << "Human: " << hCard << endl;
 
         // Let the computer observe user's playing pattern and left hand
